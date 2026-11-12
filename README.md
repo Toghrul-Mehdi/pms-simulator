@@ -23,8 +23,10 @@ Lokal baxmaq üçün `index.html` faylını brauzerdə açmaq kifayətdir.
     assets/js/ui.js         sualın göstərilməsi (ortaq)
     assets/js/app.js        hash marşrutlaşdırıcı
     assets/js/views/        home, materials, practice, exam
-    data/materials.js       araşdırma nəticələri, oxu planı
-    data/lessons.js         mövzu izahları (31 dərs)
+    data/materials.js       imtahan qaydaları (rəsmi mənbələrlə), oxu planı
+    data/sources.js         rəsmi mənbələrin reyestri (Maliyyə Nazirliyinin PDF-ləri)
+    data/lectures-*.js      50 mühazirə — rəsmi PMS proqramının 50 bəndi üzrə
+    data/lessons.js         yığcam konspektlər (mühazirələrin sonunda açılır)
     data/q-set*.js          statik sual paketləri
     data/generators.js      təsadüfi rəqəmli hesablama tapşırıqları
 
@@ -42,3 +44,10 @@ Yeni `data/q-setN.js` yaradın və `index.html`-ə əlavə edin:
     })();
 
 Variantların sırası hər göstərilişdə qarışdırılır. İmtahan parametrləri (`sual sayı, vaxt, bal`) `assets/js/core.js`-dədir.
+
+## Mühazirələrin mənbələri
+
+Mühazirələr Maliyyə Nazirliyinin saytında dərc olunmuş rəsmi Azərbaycan dilində standart mətnləri
+(maliyye.gov.az/static/140, /141, /142, /143), «Mühasibat uçotu haqqında» Qanun və Nazirliyin qaydaları
+əsasında yazılıb. Mətndəki "(m. N)" istinadı birinci mənbənin maddə nömrəsidir; hər mühazirənin sonunda
+mənbələrə birbaşa keçidlər var. Bal sistemi Nazirlər Kabinetinin 22.05.2019 tarixli 237 nömrəli qərarına uyğundur.

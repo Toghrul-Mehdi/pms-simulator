@@ -11,7 +11,7 @@ PMS.views.exam = function (app) {
       <p class="facts"><b>${cfg[m].closed}</b> qapalı · <b>${cfg[m].open}</b> açıq · <b>${cfg[m].minutes}</b> dəqiqə</p><p class="mut">${note}</p>
       <button class="btn ${m === 'mini' ? 'ghost' : ''}" data-m="${m}">Başla</button></section>`;
     app.innerHTML = `<h1>Sınaq imtahanı</h1><p class="mut">DİM-in elektron imtahan üslubunda: suallar arasında sərbəst keçid, işarələmə, qalan vaxt. Səhv cavaba görə bal çıxılmır.</p>
-      <div class="modes">${card('full', 'Tam imtahan', `Qapalı tapşırıq ${cfg.closedPoints} bal, açıq tapşırıq ${cfg.openPoints} bal, cəmi 100 bal. Keçid həddi ${cfg.passPercent}%.`)}${card('mini', 'Mini sınaq', 'Qısa yoxlama — gündəlik məşq üçün.')}</div>
+      <div class="modes">${card('full', 'Tam imtahan', `Rəsmi bal bölgüsü: qapalı tapşırıqlardan 20-si 1 bal, 10-u 2 bal; açıq tapşırıqlardan 8-i 5 bal, 2-si 10 bal — cəmi 100 bal. Keçid həddi ${cfg.passPercent} bal.`)}${card('mini', 'Mini sınaq', 'Qısa yoxlama — gündəlik məşq üçün.')}</div>
       <section class="card"><h2>Qaydalar</h2><ul><li>Açıq tapşırıqlarda cavabı yalnız rəqəmlə yazın (onluq üçün vergül və ya nöqtə).</li><li>Kalkulyator və qaralama kağızı hazırlayın.</li><li>Vaxt bitdikdə imtahan avtomatik təhvil verilir.</li><li>Səhifəni bağlasanız, imtahan saxlanılır və vaxt davam edir.</li></ul></section>`;
     app.querySelectorAll('[data-m]').forEach(b => b.onclick = () => {
       const e = bank.buildExam(b.dataset.m);
@@ -70,7 +70,7 @@ PMS.views.exam = function (app) {
       <div class="row"><a class="btn" href="#/practice/wrong">Səhvlər üzərində iş</a><button class="btn ghost" id="new">Yeni sınaq</button></div></section>
     <section class="card"><h2>Mövzular üzrə</h2><div class="bars">${topics.map(([t, v]) => { const p = Math.round(v.correct / v.total * 100); return `<a class="bar" href="#/practice/${encodeURIComponent(t)}"><span class="bar-t">${esc(t)}</span><span class="bar-track"><i class="${p < 50 ? 'bad' : p < 75 ? 'mid' : 'ok'}" style="width:${Math.max(p, 3)}%"></i></span><span class="bar-v">${v.correct}/${v.total}</span></a>`; }).join('')}</div></section>
     <div class="row between"><h2>Cavabların təhlili</h2><label class="mut small"><input type="checkbox" id="only"> yalnız səhvlər</label></div>
-    <div id="rev">${r.details.map((d, k) => `<section class="card qcard rv ${d.ok ? 'is-ok' : 'is-bad'}">${ui.tags(d.q, `<span class="tag strong">${k + 1}</span><span class="pill ${d.ok ? 'ok' : 'bad'}">${d.ok ? '+' + d.pts + ' bal' : bank.answered(d.given) ? '0 bal' : 'cavabsız'}</span>`)}${ui.question(d.q, d.q.type === 'closed' ? d.given : d.given, true)}${ui.feedback(d.q, d.ok)}</section>`).join('')}</div>`;
+    <div id="rev">${r.details.map((d, k) => `<section class="card qcard rv ${d.ok ? 'is-ok' : 'is-bad'}">${ui.tags(d.q, `<span class="tag strong">${k + 1}</span><span class="pill ${d.ok ? 'ok' : 'bad'}">${d.ok ? '+' + d.pts + ' / ' + d.max + ' bal' : (bank.answered(d.given) ? '0' : 'cavabsız') + ' / ' + d.max + ' bal'}</span>`)}${ui.question(d.q, d.q.type === 'closed' ? d.given : d.given, true)}${ui.feedback(d.q, d.ok)}</section>`).join('')}</div>`;
     app.querySelector('#new').onclick = lobby;
     app.querySelector('#only').onchange = e => app.querySelector('#rev').classList.toggle('only-bad', e.target.checked);
     window.scrollTo(0, 0);

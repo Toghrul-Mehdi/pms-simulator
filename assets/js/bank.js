@@ -59,12 +59,21 @@
     answerText: q => q.type === 'closed' ? `${L[q.answer]}) ${q.options[q.answer]}` : `${PMS.util.money(q.answer)} ${q.unit}`,
     grade(questions, answers) {
       const cfg = PMS.config; let score = 0, max = 0; const byTopic = {};
+      // Bal tapşırığın öz tipi daxilindəki sırasına görə verilir (rəsmi bölgü; mini sınaqda mütənasib).
+      const seen = { closed: 0, open: 0 }, total = { closed: 0, open: 0 };
+      questions.forEach(q => total[q.type]++);
+      const ptsFor = (type, i) => {
+        const tiers = cfg.points[type], full = tiers.reduce((a, [n]) => a + n, 0);
+        let acc = 0;
+        for (const [n, p] of tiers) { acc += n; if (i < Math.round(acc * total[type] / full)) return p; }
+        return tiers[tiers.length - 1][1];
+      };
       const details = questions.map(q => {
-        const pts = q.type === 'closed' ? cfg.closedPoints : cfg.openPoints;
+        const pts = ptsFor(q.type, seen[q.type]++);
         const ok = this.check(q, answers[q.id]);
         max += pts; if (ok) score += pts;
         const t = byTopic[q.topic] ||= { correct: 0, total: 0 }; t.total++; if (ok) t.correct++;
-        return { q, given: answers[q.id], ok, pts: ok ? pts : 0 };
+        return { q, given: answers[q.id], ok, pts: ok ? pts : 0, max: pts };
       });
       const percent = max ? Math.round(score / max * 1000) / 10 : 0;
       return { score, max, percent, passed: percent >= cfg.passPercent, byTopic, details };

@@ -4,7 +4,10 @@ window.PMS = {
     certificate: 'Maliyyə hesabatları (MHBS)',
     full: { closed: 30, open: 10, minutes: 180 },
     mini: { closed: 10, open: 3, minutes: 30 },
-    closedPoints: 2, openPoints: 4, passPercent: 50,
+    // Rəsmi bal bölgüsü (NK-nın 22.05.2019 tarixli 237 nömrəli qərarı, b. 2.19):
+    // qapalı: 20 tapşırıq × 1 bal + 10 tapşırıq × 2 bal; açıq: 8 tapşırıq × 5 bal + 2 tapşırıq × 10 bal = 100.
+    points: { closed: [[20, 1], [10, 2]], open: [[8, 5], [2, 10]] },
+    passPercent: 50,
     generatedShare: 0.4, // açıq tapşırıqların hansı hissəsi generatordan gəlir
   },
   // Mövzu adları (bütün data fayllarında eyni açarlar)
