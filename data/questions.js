@@ -208,4 +208,5 @@ const questions = [
   O('IAS 37 Ehtiyatlar', 'Zəmanət üzrə: satılmış malların 75%-də qüsur olmayacaq, 20%-də kiçik qüsur (təmir 20 000 AZN), 5%-də böyük qüsur (təmir 100 000 AZN) gözlənilir. Ehtiyat (AZN)?', 9000, '20%×20000 + 5%×100000 = 4000+5000 = 9 000.'),
 ];
 
+questions.push(...require("./questions2"));
 module.exports = { questions, config };
