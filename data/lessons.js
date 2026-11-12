@@ -1,4 +1,4 @@
-// Mövzu izahları (dərslər). Hər dərs: qısa məğz + bloklar.
+// Yığcam konspektlər və hesablama nümunələri (mühazirələrin sonunda göstərilir).
 // Blok növləri: U — siyahı, E — həlli ilə nümunə, J — mühasibat yazılışları, W — imtahan tələləri.
 (function () {
   const T = PMS.T;
@@ -8,7 +8,7 @@
   const W = (...ul) => ({ h: 'İmtahan tələləri', warn: ul });
   const L = (id, group, title, topic, summary, blocks) => ({ id, group, title, topic, summary, blocks });
 
-  PMS.materials.sections = [
+  PMS.materials.konspekt = [
     // ================= ƏSASLAR =================
     L('framework', 'Əsaslar', 'Konseptual əsaslar', T.F,
       'Konseptual əsaslar standart deyil — standartların hazırlanması və standart olmayan hallarda uçot siyasətinin seçilməsi üçün çərçivədir. Standartla ziddiyyət olduqda standart üstündür.',
