@@ -1,15 +1,8 @@
-// Sual bankı — MHBS üzrə PMS I mərhələ. type: closed (answer = variant indeksi, 0-dan) | open (answer = rəqəm).
-// Formata dair: 30 qapalı + 10 açıq, 180 dəq, 100 bal, keçid 50%. Bal bölgüsü (2/4) — fərziyyədir.
-const config = {
-  closedCount: 30, openCount: 10, minutes: 180,
-  closedPoints: 2, openPoints: 4, passPercent: 50,
-  certificate: 'Maliyyə hesabatları (MHBS)',
-};
-
-let n = 0;
-const C = (topic, text, options, answer, explanation) => ({ id: 'c' + ++n, type: 'closed', tracks: ['mhbs'], topic, text, options, answer, explanation });
-const O = (topic, text, answer, explanation, unit = 'AZN', tolerance) => ({ id: 'o' + ++n, type: 'open', tracks: ['mhbs'], topic, text, answer, explanation, unit, tolerance });
-
+// Sual bankı — 1-ci paket (əsas).
+(function () {
+  const m = PMS.bank.maker("a");
+  const C = m.C;
+  const O = (topic, text, answer, explanation, unit, tolerance) => m.O(topic, text, answer, explanation, tolerance, unit);
 const questions = [
   // ---- Konseptual əsaslar / IAS 1
   C('Konseptual əsaslar / IAS 1', 'Konseptual əsaslara görə faydalı maliyyə məlumatının fundamental keyfiyyət xüsusiyyətləri hansılardır?',
@@ -208,5 +201,5 @@ const questions = [
   O('IAS 37 Ehtiyatlar', 'Zəmanət üzrə: satılmış malların 75%-də qüsur olmayacaq, 20%-də kiçik qüsur (təmir 20 000 AZN), 5%-də böyük qüsur (təmir 100 000 AZN) gözlənilir. Ehtiyat (AZN)?', 9000, '20%×20000 + 5%×100000 = 4000+5000 = 9 000.'),
 ];
 
-questions.push(...require("./questions2"));
-module.exports = { questions, config };
+PMS.bank.add(questions);
+})();

@@ -1,6 +1,6 @@
 // Metodik materiallar — MHBS (Maliyyə hesabatlarının beynəlxalq standartları) üzrə PMS I mərhələ.
 // Hər bölmə: əsas anlayışlar, formullar, imtahanda tez-tez düşən tələlər.
-module.exports = {
+PMS.materials = {
   research: {
     title: 'Sertifikat növü imtahana necə təsir edir?',
     points: [
@@ -194,3 +194,18 @@ module.exports = {
     },
   ],
 };
+
+// Əlavə bölmə: digər standartlar (formullar cədvəlindən əvvəl yerləşdirilir)
+PMS.materials.sections.splice(-1, 0, {
+  id: 'others', title: 'IFRS 1, IFRS 2, IFRS 8, IFRS 11, IAS 34, IAS 41 və digərləri',
+  body: [
+    '<b>IFRS 1</b>: keçid tarixi — tam müqayisəli məlumat verilən ən erkən dövrün əvvəli. Açılış balansında ilk MHBS hesabat dövrünün sonunda qüvvədə olan standartlar retrospektiv tətbiq olunur; düzəlişlər bölüşdürülməmiş mənfəətə. Azadolmalar: şərti ilkin dəyər (deemed cost), biznes birləşmələri. Qiymətləndirmələr sonrakı məlumatla dəyişdirilmir. Kapital və məcmu gəlir üzləşdirmələri tələb olunur.',
+    '<b>IFRS 2</b>: kapitalla ödənilən — verilmə tarixindəki ədalətli dəyər, hüquq qazanma müddətinə bölünür, yenidən ölçülmür (Dt Xərc, Kt Kapital). Pulla ödənilən (SARs) — öhdəlik, hər hesabat tarixində yenidən ölçülür. Xərc = işçi sayı × qalma ehtimalı × opsion sayı × ədalətli dəyər × keçən müddət / ümumi müddət − əvvəl tanınmış.',
+    '<b>IFRS 8</b>: seqmentlər rəhbərliyin (CODM) daxili hesabatlarına əsaslanır. Hədlər: gəlir, mənfəət/zərər və ya aktivlərin 10%-i; hesabat verilən seqmentlər xarici gəlirin ən azı 75%-ni əhatə etməlidir; əsas müştəri — gəlirin 10%-i.',
+    '<b>IFRS 11</b>: birgə əməliyyat — öz aktiv/öhdəlik/gəlir/xərc payını tanıyır; birgə müəssisə — iştirak payı metodu. Birgə nəzarət = yekdil razılıq.',
+    '<b>IAS 34</b>: sıxlaşdırılmış hesabatlar + seçilmiş qeydlər; illik hesabatla eyni siyasətlər; mövsümi gəlir/xərclər təxirə salınmır; vergi — illik gözlənilən effektiv dərəcə ilə.',
+    '<b>IAS 41</b>: bioloji aktivlər və yığım anında kənd təsərrüfatı məhsulu — ədalətli dəyər − satış xərcləri; dəyişikliklər P/L-də. Meyvə verən bitkilər — IAS 16.',
+    '<b>IAS 29</b>: hiperinflyasiya (3 ildə ~100%) — qeyri-monetar maddələr ümumi qiymət indeksi ilə yenidən hesablanır, monetar maddələr yox.',
+    '<b>IAS 27</b>: ayrıca hesabatlarda törəmə/asılı müəssisələrə investisiya — maya, IFRS 9 və ya iştirak payı metodu.',
+  ],
+});

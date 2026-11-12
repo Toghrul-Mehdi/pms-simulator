@@ -1,16 +1,8 @@
-// Əlavə sual bankı (2-ci paket). Struktur questions.js ilə eynidir.
-let n = 1000;
-const C = (topic, text, options, answer, explanation) => ({ id: 'c' + ++n, type: 'closed', tracks: ['mhbs'], topic, text, options, answer, explanation });
-const O = (topic, text, answer, explanation, tolerance, unit = 'AZN') => ({ id: 'o' + ++n, type: 'open', tracks: ['mhbs'], topic, text, answer, explanation, unit, tolerance });
-
-const T = {
-  F: 'Konseptual əsaslar / IAS 1', E: 'IAS 8 / IAS 10', I2: 'IAS 2 Ehtiyatlar', I16: 'IAS 16 Əsas vəsaitlər',
-  I36: 'IAS 36 Dəyərsizləşmə', I38: 'IAS 38 / 40 / 23 / 20', L: 'IFRS 16 İcarə', R: 'IFRS 15 Gəlir',
-  P: 'IAS 37 Ehtiyatlar', X: 'IAS 12 Mənfəət vergisi', FI: 'IFRS 9 / IAS 32', G: 'IFRS 10 / 3 / IAS 28',
-  OT: 'IAS 7 / 21 / 33 / 19 / 13 / 5 / 24',
-};
-
-module.exports = [
+// Sual bankı — 2-ci paket.
+(function () {
+  const { C, O } = PMS.bank.maker("b");
+  const T = PMS.T;
+PMS.bank.add([
   // ===================== QAPALI =====================
   // Konseptual əsaslar / IAS 1
   C(T.F, 'Konseptual əsaslara görə hansı gücləndirici keyfiyyət xüsusiyyətidir?', ['Uyğunluq', 'Düzgün təqdimat', 'Müqayisəlilik', 'Əhəmiyyətlilik'], 2, 'Gücləndirici: müqayisəlilik, yoxlanıla bilmə, vaxtlılıq, başadüşülənlik.'),
@@ -179,4 +171,5 @@ module.exports = [
   O(T.OT, 'Müəyyən edilmiş ödəniş öhdəliyi ilin əvvəlinə 500 000, plan aktivləri 400 000 AZN, diskont dərəcəsi 5%. P/L-də xalis faiz xərci (AZN)?', 5000, '(500000−400000)×5% = 5 000.'),
   O(T.OT, 'Satış üçün saxlanılan qrupun balans dəyəri 300 000, ədalətli dəyər − satış xərcləri 260 000 AZN. Dəyərsizləşmə zərəri (AZN)?', 40000, '300000−260000 = 40 000.'),
   O(T.OT, 'Funksional valyutası USD olan törəmə müəssisənin xalis aktivləri 100 000 USD; açılış məzənnə 1,70, bağlanış 1,75 AZN (il ərzində dəyişiklik yoxdur). OCI-də tərcümə fərqi (AZN)?', 5000, '100000×(1,75−1,70) = 5 000 (gəlir).'),
-];
+]);
+})();

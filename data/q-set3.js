@@ -1,0 +1,146 @@
+// Sual bankı — 3-cü paket: nəzəri və situasiya sualları.
+(function () {
+  const { C, O } = PMS.bank.maker('c');
+  const T = PMS.T;
+  PMS.bank.add([
+    // ---------- Konseptual əsaslar / IAS 1
+    C(T.F, 'Konseptual əsaslara görə ümumi təyinatlı maliyyə hesabatlarının əsas istifadəçiləri kimlərdir?', ['Rəhbərlik və işçilər', 'Mövcud və potensial investorlar, kreditorlar və digər borc verənlər', 'Vergi orqanları', 'Geniş ictimaiyyət'], 1, 'Əsas istifadəçilər — investorlar, borc verənlər və digər kreditorlar.'),
+    C(T.F, 'Öhdəliyin tərifinə görə hansı element vacibdir?', ['Gələcək hadisədən yaranan mümkün vəzifə', 'Keçmiş hadisələr nəticəsində iqtisadi resursu ötürmək üzrə cari vəzifə', 'Rəhbərliyin niyyəti', 'Müqavilənin yazılı olması'], 1, 'Cari vəzifə + keçmiş hadisə + iqtisadi resursun ötürülməsi.'),
+    C(T.F, 'Kapital (equity) necə müəyyən edilir?', ['Aktivlər + öhdəliklər', 'Bütün öhdəliklər çıxıldıqdan sonra aktivlərdə qalıq pay', 'Nizamnamə kapitalı', 'Pul vəsaitləri'], 1, 'Kapital — qalıq paydır.'),
+    C(T.F, 'Neytrallığı dəstəkləyən anlayış hansıdır?', ['Ehtiyatlılıq (prudence) — qeyri-müəyyənlik şəraitində ehtiyatla mühakimə', 'Əvəzləşdirmə', 'Vaxtlılıq', 'Aqreqasiya'], 0, '2018-ci il Konseptual əsasları: ehtiyatlılıq neytrallığı dəstəkləyir.'),
+    C(T.F, '"Mahiyyətin formadan üstünlüyü" hansı xüsusiyyətin tərkib hissəsidir?', ['Müqayisəlilik', 'Düzgün təqdimat', 'Vaxtlılıq', 'Yoxlanıla bilmə'], 1, 'Düzgün təqdimat iqtisadi mahiyyəti əks etdirməlidir.'),
+    C(T.F, 'IAS 1-ə görə aralıq cəmlər daxil olmaqla maliyyə vəziyyəti hesabatında minimum hansı maddə ayrıca göstərilməlidir?', ['Reklam xərcləri', 'Pul vəsaitləri və onların ekvivalentləri', 'Direktorların maaşı', 'Ezamiyyə xərcləri'], 1, 'IAS 1.54.'),
+    C(T.F, 'Normal əməliyyat dövrü 18 ay olan müəssisədə 15 aya satılacaq ehtiyatlar:', ['Uzunmüddətli aktiv', 'Qısamüddətli (cari) aktiv', 'Təsnif edilmir', 'Qeyri-maddi aktiv'], 1, 'Normal əməliyyat dövrü ərzində realizə olunan aktiv caridir.'),
+    C(T.F, 'Maliyyə hesabatları ən azı hansı tezliklə təqdim edilməlidir?', ['Rübdə bir', 'İldə bir', 'İki ildə bir', 'Ayda bir'], 1, 'IAS 1.36.'),
+    C(T.F, 'Kapitalda dəyişikliklər haqqında hesabatda hansı göstərilir?', ['Yalnız mənfəət', 'Mülkiyyətçilərlə əməliyyatlar (dividendlər, səhm emissiyası) və ümumi məcmu gəlir', 'Pul axınları', 'Seqment məlumatı'], 1, 'IAS 1.106.'),
+    C(T.F, 'MHBS-dən kənara çıxma (departure) nə vaxt mümkündür?', ['Rəhbərlik istədikdə', 'Son dərəcə nadir hallarda, tələbə əməl etmək yanıldıcı olduqda, açıqlama ilə', 'Heç vaxt', 'Vergi qanunu tələb etdikdə'], 1, 'IAS 1.19.'),
+    C(T.F, 'Hesablama (accrual) prinsipinə görə əməliyyatlar nə vaxt tanınır?', ['Pul ödənildikdə', 'Baş verdikləri dövrdə', 'Faktura alındıqda', 'İlin sonunda'], 1, 'Pul axınlarından asılı olmayaraq.'),
+    C(T.F, 'Dividendlər maliyyə hesabatlarının hansında xərc kimi göstərilir?', ['Mənfəət və zərər hesabatında', 'Heç birində — kapitalda dəyişikliklərdə bölüşdürmə kimi', 'OCI-də', 'Qeydlərdə xərc kimi'], 1, 'Dividend xərc deyil, mülkiyyətçilərə bölüşdürmədir.'),
+
+    // ---------- IAS 8 / IAS 10
+    C(T.E, 'Müvafiq MHBS olmadıqda uçot siyasətini seçərkən rəhbərlik ilk növbədə nəyə istinad edir?', ['Vergi məcəlləsinə', 'Oxşar məsələləri əhatə edən MHBS tələblərinə, sonra Konseptual əsaslara', 'Sənaye praktikasına', 'Auditorun rəyinə'], 1, 'IAS 8.11.'),
+    C(T.E, 'Hansı uçot siyasətinin dəyişməsi SAYILMIR?', ['Əvvəl baş verməmiş əməliyyatlar üçün yeni siyasətin tətbiqi', 'FIFO-dan orta çəkiliyə keçid', 'Maya modelindən ədalətli dəyər modelinə keçid (IAS 40)', 'Təqdimat qaydasının dəyişməsi'], 0, 'IAS 8.16.'),
+    C(T.E, 'Uçot siyasəti könüllü olaraq nə vaxt dəyişdirilə bilər?', ['İstənilən vaxt', 'Dəyişiklik daha etibarlı və uyğun məlumat verdikdə', 'Mənfəəti artırdıqda', 'Hər 3 ildən bir'], 1, 'IAS 8.14(b).'),
+    C(T.E, 'Amortizasiya üsulunun dəyişdirilməsi:', ['Uçot siyasəti dəyişikliyi', 'Uçot qiymətləndirməsinin dəyişməsi', 'Səhv', 'Yenidən təsnifat'], 1, 'IAS 16.61 — perspektiv.'),
+    C(T.E, 'Əvvəlki ildə 50 000 AZN amortizasiyanın səhvən hesablanmadığı aşkar edilib (əhəmiyyətli). Düzəliş:', ['Cari ilin amortizasiyasına əlavə edilir', 'Açılış bölüşdürülməmiş mənfəət və müqayisəli məlumat düzəldilir', 'OCI-də göstərilir', 'Yalnız açıqlanır'], 1, 'Retrospektiv yenidən təqdimat.'),
+    C(T.E, 'Maliyyə hesabatlarının dərcinə icazə verilən tarixdən SONRA baş verən hadisələr:', ['Düzəliş tələb edir', 'IAS 10-un əhatəsinə düşmür', 'Həmişə açıqlanır', 'Növbəti ilə retrospektiv tətbiq olunur'], 1, 'IAS 10 yalnız icazə tarixinədək olan dövrü əhatə edir.'),
+    C(T.E, 'Hesabat tarixindən sonra məzənnənin kəskin dəyişməsi:', ['Düzəliş tələb edən hadisə', 'Düzəliş tələb etməyən hadisə (əhəmiyyətlidirsə açıqlanır)', 'Səhv', 'Qiymətləndirmə dəyişikliyi'], 1, 'IAS 10.22(g).'),
+    C(T.E, 'Hesabat tarixindən sonra ehtiyatların maya dəyərindən aşağı satılması nəyi göstərir?', ['Heç nəyi', 'Hesabat tarixində NRV haqqında sübutdur — düzəliş tələb edir', 'Yalnız açıqlama', 'Şərti öhdəlik'], 1, 'IAS 10.9(b)(ii).'),
+    C(T.E, 'Hesabat tarixindən sonra aşkar edilən və hesabatların yanlış olduğunu göstərən fırıldaqçılıq:', ['Növbəti ildə əks olunur', 'Düzəliş tələb edən hadisədir', 'Açıqlanmır', 'OCI-də göstərilir'], 1, 'IAS 10.9(e).'),
+
+    // ---------- IAS 2
+    C(T.I2, 'Hansı IAS 2-nin əhatəsinə daxildir?', ['Maliyyə alətləri', 'İstehsalda istifadə üçün xammal', 'Bioloji aktivlər', 'İstifadə hüququ aktivləri'], 1, 'Xammal, bitməmiş istehsal, hazır məhsul, satış üçün mallar.'),
+    C(T.I2, 'Qarşılıqlı əvəz edilə bilməyən, xüsusi layihə üçün istehsal olunan mallar üçün maya üsulu:', ['FIFO', 'Xüsusi identifikasiya', 'Orta çəkili', 'LIFO'], 1, 'IAS 2.23.'),
+    C(T.I2, 'Qiymətlər artdığı dövrdə FIFO orta çəkili üsulla müqayisədə adətən:', ['Daha aşağı mənfəət verir', 'Daha yüksək mənfəət və daha yüksək qalıq ehtiyat dəyəri verir', 'Eyni nəticə verir', 'Daha aşağı qalıq verir'], 1, 'Köhnə (ucuz) maya satışa, yeni (baha) qalığa gedir.'),
+    C(T.I2, 'Hazır məhsul maya dəyərindən yuxarı satılacaqsa, onun istehsalı üçün saxlanılan xammal (qiyməti düşüb):', ['NRV-yə silinir', 'Silinmir', 'Ədalətli dəyərə gətirilir', 'Xərcə yazılır'], 1, 'IAS 2.32.'),
+    C(T.I2, 'Ehtiyatların silinməsi (NRV-yə qədər) hansı səviyyədə aparılır?', ['Bütün ehtiyatlar üzrə cəmi', 'Adətən maddə-maddə (item by item)', 'Seqment üzrə', 'Təchizatçı üzrə'], 1, 'IAS 2.29.'),
+    C(T.I2, 'Standart maya və pərakəndə üsul IAS 2-yə görə:', ['Qadağandır', 'Nəticə maya dəyərinə yaxındırsa, rahatlıq üçün istifadə edilə bilər', 'Məcburidir', 'Yalnız banklar üçün'], 1, 'IAS 2.21.'),
+    C(T.I2, 'Satılmış ehtiyatların balans dəyəri nə vaxt xərc kimi tanınır?', ['Alındıqda', 'Müvafiq gəlir tanındığı dövrdə', 'Ödənildikdə', 'İlin sonunda'], 1, 'IAS 2.34.'),
+    C(T.I2, 'Birgə məhsulların (joint products) maya dəyəri necə bölüşdürülür?', ['Bərabər', 'Rasional və ardıcıl əsasda, məs. nisbi satış dəyərinə görə', 'Bölüşdürülmür', 'Çəkiyə görə məcburi'], 1, 'IAS 2.14.'),
+
+    // ---------- IAS 16
+    C(T.I16, 'Əsas vəsaitin tanınma meyarları:', ['Hüquqi mülkiyyət və ödəniş', 'Gələcək iqtisadi faydanın ehtimalı və dəyərin etibarlı ölçülməsi', 'Dəyərin 500 AZN-dən çox olması', 'Qeydiyyat'], 1, 'IAS 16.7.'),
+    C(T.I16, 'Aktivin sınaqdan keçirilməsi zamanı istehsal olunan nümunələrin satışından gəlir (2022-dən düzəliş):', ['Aktivin dəyərindən çıxılır', 'Mənfəət və ya zərərdə tanınır', 'OCI-də', 'Kapitalda'], 1, 'IAS 16.20A.'),
+    C(T.I16, 'Böyük texniki baxış (major inspection) xərcləri:', ['Həmişə xərc', 'Tanınma meyarları ödənərsə aktivin balans dəyərində əvəzləmə kimi tanınır', 'Ehtiyat yaradılır', 'OCI'], 1, 'IAS 16.14.'),
+    C(T.I16, 'Təxirə salınmış ödənişlə (normal kredit müddətindən artıq) alınan əsas vəsaitin dəyəri:', ['Ödənişlərin cəmi', 'Nağd qiymət ekvivalenti; fərq faiz xərci', 'Ədalətli dəyər + faiz', 'Sıfır'], 1, 'IAS 16.23.'),
+    C(T.I16, 'Faydalı istifadə müddəti nədir?', ['Aktivin fiziki ömrü', 'Aktivin müəssisə tərəfindən istifadəsi gözlənilən müddət', 'Vergi məcəlləsindəki müddət', 'Zəmanət müddəti'], 1, 'Müəssisəyə xas anlayışdır.'),
+    C(T.I16, 'Gəlirə əsaslanan amortizasiya üsulu əsas vəsaitlər üçün:', ['Tövsiyə olunur', 'Uyğun deyil', 'Məcburidir', 'Yalnız torpaq üçün'], 1, 'IAS 16.62A.'),
+    C(T.I16, 'Yenidən qiymətləndirilmiş aktiv satıldıqda yenidən qiymətləndirmə ehtiyatı:', ['P/L-ə reklassifikasiya olunur', 'Birbaşa bölüşdürülməmiş mənfəətə köçürülə bilər', 'Silinir', 'Qudvilə əlavə edilir'], 1, 'IAS 16.41.'),
+    C(T.I16, 'Torpaq və bina birlikdə alındıqda:', ['Birlikdə amortizasiya olunur', 'Ayrı-ayrı aktiv kimi uçota alınır', 'Heç biri amortizasiya olunmur', 'Yalnız torpaq amortizasiya olunur'], 1, 'IAS 16.58.'),
+    C(T.I16, 'Əvvəl P/L-də tanınmış yenidən qiymətləndirmə azalmasından sonra artım:', ['Tam OCI-də', 'Əvvəlki azalma həddində P/L-də, qalanı OCI-də', 'Tam P/L-də', 'Tanınmır'], 1, 'IAS 16.39.'),
+
+    // ---------- IAS 36
+    C(T.I36, 'Pul yaradan vahid (PYV) nədir?', ['Ən böyük aktiv qrupu', 'Digər aktivlərdən əsasən asılı olmayan pul daxilolmaları yaradan ən kiçik müəyyən edilə bilən aktiv qrupu', 'Hüquqi şəxs', 'Seqment'], 1, 'IAS 36.6.'),
+    C(T.I36, 'Hansı aktiv IAS 36-nın əhatəsindən KƏNARDIR?', ['Əsas vəsaitlər', 'Ehtiyatlar', 'Qudvil', 'Qeyri-maddi aktivlər'], 1, 'Ehtiyatlar — IAS 2; həmçinin təxirə salınmış vergi aktivləri, maliyyə aktivləri.'),
+    C(T.I36, 'Qudvil dəyərsizləşmə testi üçün hansı səviyyəyə bölüşdürülür?', ['Hüquqi şəxslərə', 'Birləşmənin sinerjisindən faydalanması gözlənilən PYV və ya PYV qruplarına', 'Bütövlükdə qrupa', 'Bölüşdürülmür'], 1, 'IAS 36.80 — əməliyyat seqmentindən böyük ola bilməz.'),
+    C(T.I36, 'Dəyərsizləşmə zərəri PYV-yə bölüşdürülərkən ayrı aktivin balans dəyəri nədən aşağı salına bilməz?', ['Sıfırdan', 'Ədalətli dəyər − satış xərcləri, istifadə dəyəri və sıfırın ən yüksəyindən', 'İlkin dəyərdən', 'Ləğv dəyərindən'], 1, 'IAS 36.105.'),
+    C(T.I36, 'İstifadə dəyəri hesablanarkən pul axını proqnozları adətən maksimum neçə illik büdcələrə əsaslanır?', ['3', '5', '10', '20'], 1, 'IAS 36.33(b) — daha uzun müddət əsaslandırılmalıdır.'),
+    C(T.I36, 'Dəyərsizləşmədən sonra amortizasiya:', ['Dəyişmir', 'Yeni balans dəyəri əsasında qalan müddətə yenidən hesablanır', 'Dayandırılır', 'İkiqat hesablanır'], 1, 'IAS 36.63.'),
+    C(T.I36, 'Korporativ aktivlər (məs. baş ofis binası) dəyərsizləşmə testində:', ['Nəzərə alınmır', 'Əsaslı və ardıcıl şəkildə PYV-lərə bölüşdürülür', 'Ayrıca test edilir', 'Qudvilə əlavə edilir'], 1, 'IAS 36.102.'),
+
+    // ---------- IAS 38 / 40 / 23 / 20
+    C(T.I38, 'Qeyri-maddi aktivin tərifinin əsas elementləri:', ['Fiziki forma, nəzarət', 'Müəyyən edilə bilmə, nəzarət, gələcək iqtisadi fayda', 'Satıla bilmə, qeydiyyat', 'Hüquqi mühafizə'], 1, 'IAS 38.8-17.'),
+    C(T.I38, 'Qeyri-maddi aktivlər üçün yenidən qiymətləndirmə modeli nə vaxt tətbiq oluna bilər?', ['Həmişə', 'Yalnız fəal bazar olduqda', 'Heç vaxt', 'Rəhbərlik qərar verdikdə'], 1, 'IAS 38.75.'),
+    C(T.I38, 'İşçilərin təlimi nəticəsində yaranan bacarıqlar:', ['Qeyri-maddi aktiv kimi tanınır', 'Adətən tanınmır — nəzarət kifayət deyil', 'Qudvil', 'Əsas vəsait'], 1, 'IAS 38.15.'),
+    C(T.I38, 'Əvvəl xərc kimi tanınmış inkişaf xərcləri meyarlar sonradan ödənildikdə:', ['Geriyə kapitallaşdırılır', 'Bərpa edilmir (kapitallaşdırılmır)', 'OCI-yə köçürülür', 'Qudvilə əlavə edilir'], 1, 'IAS 38.71.'),
+    C(T.I38, 'Müddəti məhdud qeyri-maddi aktivin ləğv dəyəri adətən:', ['Dəyərin 10%-i', 'Sıfır qəbul edilir (istisnalar var)', 'Ədalətli dəyər', 'İlkin dəyər'], 1, 'IAS 38.100.'),
+    C(T.I38, 'Veb-saytın yalnız reklam məqsədli hazırlanması xərcləri:', ['Kapitallaşdırılır', 'Xərcə silinir', 'Əsas vəsait', 'Ehtiyat'], 1, 'SIC-32.'),
+    C(T.I38, 'Gələcəkdə istifadəsi müəyyən edilməmiş torpaq sahəsi:', ['Əsas vəsait', 'İnvestisiya mülkiyyəti', 'Ehtiyat', 'Qeyri-maddi aktiv'], 1, 'IAS 40.8(b).'),
+    C(T.I38, 'Adi fəaliyyət gedişində satış üçün tikilən mənzillər (tikinti şirkəti):', ['İnvestisiya mülkiyyəti', 'Ehtiyatlar (IAS 2)', 'Əsas vəsait', 'Maliyyə aktivi'], 1, 'IAS 40.9(a).'),
+    C(T.I38, 'Binanın əhəmiyyətsiz hissəsi inzibati məqsədlə istifadə olunur, qalan hissə icarəyə verilir və hissələr ayrıca satıla bilmir. Bina:', ['Əsas vəsait', 'İnvestisiya mülkiyyəti', 'İkisinə bölünür', 'Ehtiyat'], 1, 'IAS 40.10.'),
+    C(T.I38, 'Əsas vəsaitin (maya modeli) ədalətli dəyər modeli ilə ölçülən investisiya mülkiyyətinə köçürülməsi zamanı yaranan artım:', ['P/L', 'IAS 16 üzrə yenidən qiymətləndirmə kimi — OCI', 'Qudvil', 'Tanınmır'], 1, 'IAS 40.61-62.'),
+    C(T.I38, 'Borc xərclərinin kapitallaşdırılması nə vaxt bitir?', ['Kredit ödənildikdə', 'Aktivi istifadəyə və ya satışa hazırlamaq üçün zəruri fəaliyyətlərin əsas hissəsi tamamlandıqda', 'İlin sonunda', 'Aktiv satıldıqda'], 1, 'IAS 23.22.'),
+    C(T.I38, 'Borc xərclərinə hansı daxildir?', ['Səhm emissiyası xərcləri', 'Effektiv faiz üsulu ilə faiz xərci və icarə öhdəlikləri üzrə faiz', 'Dividendlər', 'Amortizasiya'], 1, 'IAS 23.6.'),
+    C(T.I38, 'Qaytarılmalı olan dövlət qrantı:', ['Səhvin düzəldilməsi kimi', 'Uçot qiymətləndirməsinin dəyişməsi kimi uçota alınır', 'Kapitaldan çıxılır', 'Nəzərə alınmır'], 1, 'IAS 20.32.'),
+    C(T.I38, 'Artıq çəkilmiş xərclərin kompensasiyası kimi alınan qrant:', ['Gələcək dövrlərə bölünür', 'Alınacağı dövrdə P/L-də tanınır', 'Kapitalda', 'OCI'], 1, 'IAS 20.20.'),
+
+    // ---------- IFRS 16
+    C(T.L, 'İcarə müddətinə nə daxildir?', ['Yalnız ləğv edilə bilməyən dövr', 'Ləğv edilə bilməyən dövr + istifadəsi əsaslı şəkildə müəyyən olan uzatma opsionu dövrləri', 'Aktivin faydalı müddəti', 'Həmişə 5 il'], 1, 'IFRS 16.18.'),
+    C(T.L, 'Təchizatçının aktivi əvəz etmək üzrə əsaslı (substantive) hüququ varsa:', ['Müqavilə icarədir', 'Müəyyən edilmiş aktiv yoxdur — icarə deyil', 'Maliyyə icarəsidir', 'Qısamüddətli icarədir'], 1, 'IFRS 16.B14.'),
+    C(T.L, 'İndeksdən asılı dəyişən icarə ödənişləri ilkin olaraq necə ölçülür?', ['Öhdəliyə daxil edilmir', 'Başlanğıc tarixindəki indeks əsasında öhdəliyə daxil edilir', 'Proqnoz indekslə', 'Maksimum məbləğlə'], 1, 'IFRS 16.27(b).'),
+    C(T.L, 'İcarəçi P/L-də nəyi tanıyır (ümumi model)?', ['İcarə xərci düz xətt', 'ROU amortizasiyası və icarə öhdəliyi üzrə faiz xərci', 'Yalnız faiz', 'Heç nə'], 1, 'Xərc ilk illərdə daha yüksək olur.'),
+    C(T.L, 'İcarə müddəti dəyişdikdə (uzatma opsionunun yenidən qiymətləndirilməsi) öhdəlik:', ['Dəyişmir', 'Yenilənmiş diskont dərəcəsi ilə yenidən ölçülür, ROU düzəldilir', 'P/L-ə silinir', 'Köhnə dərəcə ilə'], 1, 'IFRS 16.40.'),
+    C(T.L, 'İcarəyə verənin maliyyə icarəsi kimi təsnifat göstəricisi:', ['İcarə müddəti iqtisadi ömrün əsas hissəsini əhatə edir', 'Ödənişlər dəyişəndir', 'İcarəçi sığorta ödəyir', 'Müddət 12 aydır'], 0, 'IFRS 16.63(c).'),
+    C(T.L, 'İstehsalçı/diler icarəyə verən maliyyə icarəsinin başlanğıcında:', ['Heç nə tanımır', 'Satış mənfəətini tanıyır', 'Yalnız faiz gəliri', 'İcarə gəlirini düz xətt'], 1, 'IFRS 16.71.'),
+    C(T.L, 'Aşağı dəyərli aktiv istisnası nə əsasında qiymətləndirilir?', ['İcarəçinin ölçüsünə görə', 'Aktivin yeni olduqdakı mütləq dəyərinə görə', 'Ödənişlərə görə', 'Müddətə görə'], 1, 'IFRS 16.B3-B8 (təx. 5 000 USD).'),
+    C(T.L, 'Subicarədə aralıq icarəyə verən subicarəni nəyə istinadla təsnif edir?', ['Əsas aktivə', 'Baş icarədən yaranan istifadə hüququ aktivinə', 'Öhdəliyə', 'Bazar qiymətinə'], 1, 'IFRS 16.B58.'),
+
+    // ---------- IFRS 15
+    C(T.R, 'Müqavilənin IFRS 15 üzrə mövcudluğu üçün hansı meyar tələb olunur?', ['Yazılı forma', 'Ödənişin toplanmasının ehtimal olunması', 'Notarial təsdiq', 'Avans ödənişi'], 1, 'IFRS 15.9(e).'),
+    C(T.R, 'Müqavilə aktivi (contract asset) nədir?', ['Şərtsiz ödəniş hüququ', 'Ötürülmüş mallar müqabilində zamanın keçməsindən başqa şərtdən asılı ödəniş hüququ', 'Avans', 'Ehtiyat'], 1, 'Şərtsiz hüquq — debitor borcu.'),
+    C(T.R, 'Müştəridən alınmış avans:', ['Gəlir', 'Müqavilə öhdəliyi', 'Müqavilə aktivi', 'Kapital'], 1, 'IFRS 15.106.'),
+    C(T.R, 'Müqavilə dəyişikliyi ayrıca müqavilə kimi uçota alınır, əgər:', ['Qiymət azalırsa', 'Ayrıca mal/xidmətlər əlavə edilir və qiymət onların müstəqil satış qiymətini əks etdirir', 'Müddət uzanırsa', 'Həmişə'], 1, 'IFRS 15.20.'),
+    C(T.R, 'Dəyişən ödənişin qiymətləndirilməsi üsulları:', ['Yalnız maksimum məbləğ', 'Gözlənilən dəyər və ya ən ehtimal olunan məbləğ', 'Minimum məbləğ', 'Orta bazar qiyməti'], 1, 'IFRS 15.53.'),
+    C(T.R, 'Geri alış müqaviləsi (forward) ilə satılan mal, geri alış qiyməti ilkin qiymətdən yüksəkdir:', ['Satış', 'Maliyyələşdirmə razılaşması', 'İcarə', 'Konsiqnasiya'], 1, 'IFRS 15.B66(b).'),
+    C(T.R, 'Qaytarılmayan ilkin haqq (məs. üzvlük) ayrıca xidmətin ötürülməsi ilə bağlı deyilsə:', ['Dərhal gəlir', 'Gələcək mal/xidmətlər üçün avansdır, onlar ötürüldükcə tanınır', 'Xərc', 'Kapital'], 1, 'IFRS 15.B49.'),
+    C(T.R, 'Müştərinin istifadə etməyəcəyi gözlənilən hüquqlar (breakage, məs. hədiyyə kartı):', ['Heç vaxt gəlir deyil', 'Müştərinin istifadə etdiyi hüquqlara mütənasib gəlir kimi tanınır', 'Dərhal gəlir', 'Öhdəlik kimi əbədi qalır'], 1, 'IFRS 15.B46.'),
+    C(T.R, 'Zamanla icra edilən öhdəlikdə irəliləyişin ölçülmə üsulları:', ['Yalnız xərc üsulu', 'Nəticə (output) və resurs (input) üsulları', 'Yalnız vaxt', 'Pul daxilolmaları'], 1, 'IFRS 15.41.'),
+    C(T.R, 'Nəzarətin ötürülməsinin göstəricisi DEYİL:', ['Müştərinin hüquqi mülkiyyəti', 'Fiziki sahiblik', 'Satıcının maliyyə ilinin bitməsi', 'Müştərinin aktivi qəbul etməsi'], 2, 'IFRS 15.38.'),
+
+    // ---------- IAS 37
+    C(T.P, 'Ehtiyat (provision) digər öhdəliklərdən nə ilə fərqlənir?', ['Məbləği böyükdür', 'Vaxtı və ya məbləği qeyri-müəyyəndir', 'Uzunmüddətlidir', 'Faizlidir'], 1, 'IAS 37.10.'),
+    C(T.P, 'Şirkət ətraf mühiti çirkləndirib; qanun tələb etmir, lakin şirkətin elan edilmiş təmizləmə siyasəti var:', ['Ehtiyat yoxdur', 'Konstruktiv öhdəlik — ehtiyat tanınır', 'Şərti aktiv', 'Yalnız açıqlama'], 1, 'IAS 37 Nümunə 2B.'),
+    C(T.P, 'Hesabat tarixindən əvvəl direktorlar şurası restrukturizasiya qərarı verib, lakin elan edilməyib və başlanmayıb:', ['Ehtiyat tanınır', 'Ehtiyat tanınmır', 'Yarısı tanınır', 'OCI'], 1, 'IAS 37.75.'),
+    C(T.P, 'Ehtiyat nə üçün istifadə edilə bilər?', ['İstənilən xərc üçün', 'Yalnız ilkin yaradıldığı xərclər üçün', 'Dividend üçün', 'Zərərlərin örtülməsi üçün'], 1, 'IAS 37.61.'),
+    C(T.P, 'Aktivlərin gözlənilən satışından mənfəət ehtiyatın ölçülməsində:', ['Çıxılır', 'Nəzərə alınmır', 'Əlavə edilir', 'Diskontlaşdırılır'], 1, 'IAS 37.51.'),
+    C(T.P, 'Birgə və ayrıca (solidar) məsuliyyətdə digər tərəflərin ödəyəcəyi gözlənilən hissə:', ['Ehtiyat', 'Şərti öhdəlik', 'Aktiv', 'Kapital'], 1, 'IAS 37.29.'),
+    C(T.P, 'Hər hesabat tarixində ehtiyatlar:', ['Dəyişdirilmir', 'Nəzərdən keçirilir və cari ən yaxşı qiymətləndirməyə düzəldilir', 'Silinir', 'İndeksləşdirilir'], 1, 'IAS 37.59.'),
+    C(T.P, 'Gələcək təmir və texniki xidmət üçün (öhdəlik yoxdur) ehtiyat:', ['Tanınır', 'Tanınmır', 'OCI-də', 'Kapitalda'], 1, 'Cari öhdəlik yoxdur.'),
+
+    // ---------- IAS 12
+    C(T.X, 'Aktivin vergi bazası nədir?', ['Bazar dəyəri', 'Gələcəkdə vergi məqsədləri üçün çıxılacaq məbləğ', 'Balans dəyəri', 'İlkin dəyər'], 1, 'IAS 12.7.'),
+    C(T.X, 'Avans alınmış və alındığı anda vergiyə cəlb olunmuş gəlir (öhdəlik) üzrə:', ['DTL', 'DTA', 'Fərq yoxdur', 'Daimi fərq'], 1, 'Vergi bazası sıfır — çıxılan fərq.'),
+    C(T.X, 'Təxirə salınmış vergi aktivi və öhdəliyi nə vaxt əvəzləşdirilir?', ['Həmişə', 'Hüquqi əvəzləşdirmə hüququ olduqda və eyni vergi orqanına aid olduqda', 'Heç vaxt', 'Rəhbərlik istədikdə'], 1, 'IAS 12.74.'),
+    C(T.X, 'Təxirə salınmış vergi maliyyə vəziyyəti hesabatında necə təsnif edilir?', ['Cari', 'Həmişə uzunmüddətli', 'Realizə müddətinə görə', 'Kapital'], 1, 'IAS 1.56.'),
+    C(T.X, 'Vergi dərəcəsi dəyişdikdə mövcud təxirə salınmış vergi qalıqları:', ['Dəyişmir', 'Yeni dərəcə ilə yenidən ölçülür', 'Silinir', 'Retrospektiv düzəldilir'], 1, 'Təsir adətən P/L-də.'),
+    C(T.X, 'DTA-nın balans dəyəri hər hesabat tarixində:', ['Dəyişməz qalır', 'Nəzərdən keçirilir və kifayət qədər vergi tutulan mənfəət ehtimalı yoxdursa azaldılır', 'Diskontlaşdırılır', 'Amortizasiya olunur'], 1, 'IAS 12.56.'),
+    C(T.X, 'Əməliyyat nə mühasibat, nə vergi mənfəətinə təsir etmirsə və biznes birləşməsi deyilsə (bərabər fərqlər yaratmır), ilkin tanınmada yaranan müvəqqəti fərq üzrə:', ['Təxirə salınmış vergi tanınır', 'Təxirə salınmış vergi tanınmır (ilkin tanınma istisnası)', 'Cari vergi tanınır', 'Qudvil tanınır'], 1, 'IAS 12.15, 24.'),
+
+    // ---------- Açıq
+    O(T.F, 'Aktivlər 850 000 AZN, öhdəliklər 520 000 AZN. Kapital (AZN)?', 330000, '850000 − 520000 = 330 000.'),
+    O(T.F, 'İlin əvvəlinə kapital 400 000 AZN; il ərzində səhm emissiyası 50 000, dividend 30 000, ilin sonuna kapital 495 000 AZN. Ümumi məcmu gəlir (AZN)?', 75000, '495000 − 400000 − 50000 + 30000 = 75 000.'),
+    O(T.F, 'Gəlir 500 000, satışın maya dəyəri 300 000, əməliyyat xərcləri 120 000, yenidən qiymətləndirmə artımı 40 000 AZN (vergi nəzərə alınmır). Ümumi məcmu gəlir (AZN)?', 120000, 'Mənfəət 80000 + OCI 40000 = 120 000.'),
+    O(T.E, 'Əvvəlki ilin mənfəəti 200 000 AZN göstərilib; sonra məlum olub ki, 30 000 AZN xərc uçota alınmayıb. Yenidən təqdim olunmuş əvvəlki il mənfəəti (AZN, vergi nəzərə alınmır)?', 170000, '200000 − 30000 = 170 000.'),
+    O(T.E, 'Hesabat tarixində 80 000 AZN debitor borcu üçün 10% ehtiyat yaradılıb. Hesabatlar təsdiqlənməzdən əvvəl debitor iflas edib, yalnız 25% alınacaq. Əlavə tanınmalı olan zərər (AZN)?', 52000, 'Lazım olan ehtiyat 60000 − mövcud 8000 = 52 000.'),
+    O(T.I2, 'İlin əvvəlinə ehtiyat 20 000, alışlar 150 000, ilin sonuna ehtiyat 35 000 AZN. Satışın maya dəyəri (AZN)?', 135000, '20000 + 150000 − 35000 = 135 000.'),
+    O(T.I2, 'Malın alış qiyməti 50 000 AZN, idxal rüsumu 5 000, qaytarılan ƏDV 9 000, daşınma 2 000, anbarda saxlama 1 500 AZN. Ehtiyatın maya dəyəri (AZN)?', 57000, '50000 + 5000 + 2000 = 57 000; qaytarılan ƏDV və saxlama daxil deyil.'),
+    O(T.I16, 'Torpaq və bina birlikdə 600 000 AZN-ə alınıb; ədalətli dəyərləri: torpaq 200 000, bina 600 000 AZN. Binanın ilkin dəyəri (AZN)?', 450000, '600000 × 600/800 = 450 000.'),
+    O(T.I16, 'Avadanlıq 1 aprel 20X1-də 48 000 AZN-ə alınıb, ləğv dəyəri yoxdur, 4 il düz xətt. 31.12.20X1-də bitən il üzrə amortizasiya (AZN)?', 9000, '48000 / 4 × 9/12 = 9 000.'),
+    O(T.I16, 'Köhnə maşın (balans dəyəri 20 000, ədalətli dəyəri 26 000 AZN) üstəgəl 10 000 AZN nağd pul yeni maşına dəyişdirilib (kommersiya mahiyyəti var). Yeni maşının ilkin dəyəri (AZN)?', 36000, 'Verilən aktivin ədalətli dəyəri 26000 + pul 10000 = 36 000.'),
+    O(T.I36, 'Bina (yenidən qiymətləndirmə ehtiyatı 15 000 AZN) balans dəyəri 200 000 AZN, bərpa olunan məbləğ 170 000 AZN. P/L-də tanınan dəyərsizləşmə zərəri (AZN)?', 15000, 'Zərər 30000: 15000 OCI-dən, 15 000 P/L-ə.'),
+    O(T.I36, '3 il əvvəl 100 000 AZN-ə alınmış (10 il, düz xətt) aktiv 1 il əvvəl 56 000 AZN-ə dəyərsizləşdirilib (qalan 8 il üzrə amortizasiya olunur). İndi bərpa olunan məbləğ 90 000 AZN. Bərpadan sonra maksimum balans dəyəri (AZN)?', 70000, 'Dəyərsizləşmə olmasaydı: 100000 − 3 × 10000 = 70 000.'),
+    O(T.I38, 'Patent 60 000 AZN-ə alınıb, hüquqi müddət 10 il, istifadəsi gözlənilən müddət 6 il. İllik amortizasiya (AZN)?', 10000, 'Qısa müddət: 60000 / 6 = 10 000.'),
+    O(T.I38, 'Tədqiqat xərcləri 40 000 AZN, meyarlardan sonrakı inkişaf xərcləri 90 000 AZN, işçilərin təlimi 10 000 AZN. Qeyri-maddi aktiv kimi tanınan məbləğ (AZN)?', 90000, 'Yalnız meyarlardan sonrakı inkişaf xərcləri.'),
+    O(T.I38, 'Tikinti 1 martda başlayıb, 30 noyabrda bitib. Bütün il ərzində 600 000 AZN xüsusi kredit 10% ilə istifadə olunub. Kapitallaşdırılan borc xərci (AZN)?', 45000, '600000 × 10% × 9/12 = 45 000.'),
+    O(T.L, 'İcarə: 5 il, illik 12 000 AZN; icarəçi qısamüddətli/aşağı dəyərli istisnasını tətbiq edir (aşağı dəyərli aktiv). İllik P/L xərci (AZN)?', 12000, 'Düz xətt xərc: 12 000.'),
+    O(T.L, 'İcarə öhdəliyi 40 000 AZN, başlanğıcdan əvvəl ödənilmiş avans 3 000, ilkin birbaşa xərclər 1 500, bərpa xərclərinin PV-si 2 500 AZN. İstifadə hüququ aktivi (AZN)?', 47000, '40000 + 3000 + 1500 + 2500 = 47 000.'),
+    O(T.R, 'Müqavilə: 100 ədəd × 100 AZN; müştəri ildə 150 ədəddən çox alarsa, bütün alışlara 10% endirim. Şirkət həddin keçiləcəyini yüksək ehtimallı sayır. İlk 100 ədəd üzrə tanınan gəlir (AZN)?', 9000, '100 × 90 = 9 000.'),
+    O(T.R, 'Mal 1 yanvar 20X1-də satılıb, ödəniş 2 il sonra 121 000 AZN; bazar faizi 10%. Satış tarixində tanınan gəlir (AZN)?', 100000, '121000 / 1,1² = 100 000; fərq faiz gəliri.'),
+    O(T.R, 'Tikinti müqaviləsi 2 000 000 AZN; ümumi xərc 1 600 000; 1-ci ildə çəkilmiş xərc 640 000 AZN. 1-ci ilin mənfəəti (AZN)?', 160000, '40% × (2000000 − 1600000) = 160 000.'),
+    O(T.P, 'Şirkət 1 000 ədəd mal satıb; təcrübəyə görə 4%-i orta hesabla 150 AZN-lik təmir tələb edir. Zəmanət ehtiyatı (AZN)?', 6000, '1000 × 4% × 150 = 6 000.'),
+    O(T.P, 'Ehtiyatın ilin əvvəlinə qalığı 30 000 AZN, il ərzində 12 000 AZN istifadə olunub, ilin sonuna tələb olunan ehtiyat 35 000 AZN. P/L-də tanınan xərc (AZN)?', 17000, '35000 − (30000 − 12000) = 17 000.'),
+    O(T.X, 'Vergi tutulan mənfəət 300 000 AZN, dərəcə 20%, il ərzində 45 000 AZN avans vergi ödənilib. Hesabat tarixinə cari vergi öhdəliyi (AZN)?', 15000, '60000 − 45000 = 15 000.'),
+    O(T.X, 'Bina 50 000 AZN yenidən qiymətləndirilib (artım), vergi dərəcəsi 20%. OCI-də xalis (vergidən sonra) tanınan məbləğ (AZN)?', 40000, '50000 − 10000 təxirə salınmış vergi = 40 000.'),
+    O(T.X, 'İstifadə olunmamış vergi zərəri 80 000 AZN; gələcək vergi tutulan mənfəətin yalnız 50 000 AZN olacağı ehtimal edilir; dərəcə 20%. Tanınan DTA (AZN)?', 10000, '50000 × 20% = 10 000.'),
+  ]);
+})();
