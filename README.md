@@ -23,7 +23,8 @@ Lokal baxmaq üçün `index.html` faylını brauzerdə açmaq kifayətdir.
     assets/js/ui.js         sualın göstərilməsi (ortaq)
     assets/js/app.js        hash marşrutlaşdırıcı
     assets/js/views/        home, materials, practice, exam
-    data/materials.js       metodik materiallar, plan, araşdırma
+    data/materials.js       araşdırma nəticələri, oxu planı
+    data/lessons.js         mövzu izahları (31 dərs)
     data/q-set*.js          statik sual paketləri
     data/generators.js      təsadüfi rəqəmli hesablama tapşırıqları
 
