@@ -23,3 +23,11 @@
     money,
   };
 })();
+
+// Seçilmiş variantı bütün brauzerlərdə (CSS :has dəstəyindən asılı olmayaraq) vurğulayır.
+document.addEventListener('change', e => {
+  const r = e.target;
+  if (!(r instanceof HTMLInputElement) || r.type !== 'radio' || r.name !== 'q') return;
+  const box = r.closest('.opts');
+  if (box) box.querySelectorAll('.opt').forEach(o => o.classList.toggle('sel', o.contains(r)));
+});
